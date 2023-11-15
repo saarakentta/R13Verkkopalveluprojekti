@@ -1,4 +1,4 @@
--Todetaan paikallaolijat: 
+-Todetaan paikallaolijat: Saara Kenttä, Viljami Laakso, Timo Karjalainen, Julia Porkka, Stephan Simonson
 -Saavutettiinko sprintille asetetut tavoitteet?
 -Tehtiinkö kaikki sprintin käyttäjätarinat/tehtävät?
 -Tapahtuiko sprintissä jotain poikkeamia?
