@@ -3,7 +3,7 @@
 -Tehtiinkö kaikki sprintin käyttäjätarinat/tehtävät? Kyllä, Hacknplan, Verkkokaupan aihe, kovakoodattu etusivu, wireframe ja github saatiin tehtyä.
 -Tapahtuiko sprintissä jotain poikkeamia? Ei tapahtunut.
 -Miten tiimi toimii? Mikä toimii hyvin, missä on haasteita?  Tiimin yhteishenki on hyvä. Kommunikointi toimii erinomaisesti. Hacknplan projektinhallinta oli tiimillemme alussa haastavaa.
--Miten yksilöt ja tiimi voisi parantaa toimintaansa? Kaikki sujuu
+-Miten yksilöt ja tiimi voisi parantaa toimintaansa? Kaikki sujui hyvin.
 -Mikä on seuraavan sprintin tavoitteet?
 -Mitkä käyttäjätarinat/tehtävät toteutetaan seuraavassa sprintissä? 
 -Onko tekijöitä, jotka vaikuttavat työn tekemiseen (poissaoloja, vapaapäiviä)? 
