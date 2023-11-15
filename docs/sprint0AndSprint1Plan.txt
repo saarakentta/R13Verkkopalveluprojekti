@@ -1,9 +1,9 @@
 -Todetaan paikallaolijat: Saara Kenttä, Viljami Laakso, Timo Karjalainen, Julia Porkka, Stephan Simonson
--Saavutettiinko sprintille asetetut tavoitteet?
--Tehtiinkö kaikki sprintin käyttäjätarinat/tehtävät?
--Tapahtuiko sprintissä jotain poikkeamia?
--Miten tiimi toimii? Mikä toimii hyvin, missä on haasteita?
--Miten yksilöt ja tiimi voisi parantaa toimintaansa?
+-Saavutettiinko sprintille asetetut tavoitteet? Kyllä. Verkkokaupan aihe, kovakoodattu etusivu, wireframe ja
+-Tehtiinkö kaikki sprintin käyttäjätarinat/tehtävät? Kyllä, Hacknplan, Verkkokaupan aihe, kovakoodattu etusivu, wireframe ja github saatiin tehtyä.
+-Tapahtuiko sprintissä jotain poikkeamia? Kaikki sujui hyvin.
+-Miten tiimi toimii? Mikä toimii hyvin, missä on haasteita?  Tiimin yhteishenki on hyvä. Kommunikointi toimii erinomaisesti. Hacknplan projektinhallinta oli tiimillemme alussa haastavaa.
+-Miten yksilöt ja tiimi voisi parantaa toimintaansa? 
 -Mikä on seuraavan sprintin tavoitteet?
--Mitkä käyttäjätarinat/tehtävät toteutetaan seuraavassa sprintissä?
+-Mitkä käyttäjätarinat/tehtävät toteutetaan seuraavassa sprintissä? 
 -Onko tekijöitä, jotka vaikuttavat työn tekemiseen (poissaoloja, vapaapäiviä)?
