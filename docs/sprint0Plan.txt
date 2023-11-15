@@ -1,0 +1,8 @@
+9.11. klo 16-18
+-Todetaan paikallaolijat: 
+Viljami Laakso, Timo Karjalainen, Julia Porkka, Stephan Simonson, Saara Kenttä, Joonas Liikala
+
+-Mikä on seuraavan sprintin tavoitteet?
+Projektin aloittaminen, GitHubiin repon luominen, verkkokaupan aiheen ideointi, backlogin työstäminen, wireframe
+
+Seuraava sprinttipalaveri eli sprint0 katselmointi ja sprint1 suunnittelu 15.11. klo 10:00.
