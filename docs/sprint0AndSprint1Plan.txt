@@ -6,4 +6,4 @@
 -Miten yksilöt ja tiimi voisi parantaa toimintaansa? Kaikki sujui hyvin.
 -Mikä on seuraavan sprintin tavoitteet? UI-suunnittelua sekä tietokannan ja backendin tekemistä.
 -Mitkä käyttäjätarinat/tehtävät toteutetaan seuraavassa sprintissä? 
--Onko tekijöitä, jotka vaikuttavat työn tekemiseen (poissaoloja, vapaapäiviä)? ------1
+-Onko tekijöitä, jotka vaikuttavat työn tekemiseen (poissaoloja, vapaapäiviä)? ------.
