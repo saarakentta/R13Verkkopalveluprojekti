@@ -14,7 +14,8 @@ function App() {
         <Header/>
       </div>
       <div>
-        <Navbar/>;
+        <Navbar/>
+        <ShoppingCart/>;
       </div>
       <div>
         <Dropdown/>
@@ -23,7 +24,7 @@ function App() {
         <Content/>
       </div>
       <div>
-        <ShoppingCart/>
+        
       </div>
       <div>
         <Footer/>

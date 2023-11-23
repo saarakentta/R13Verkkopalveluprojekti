@@ -31,22 +31,22 @@ const ShoppingCart = () => {
       <ul>
         {cartItems.map((item, index) => (
           <li key={index}>
-            {item.name} - ${item.price}
+            {item.name} - €{item.price}
             <button onClick={() => removeItemFromCart(index)}>Remove</button>
           </li>
         ))}
       </ul>
 
       {/* Display the total price of items in the cart */}
-      <p>Total: ${calculateTotal()}</p>
+      <p>Total: €{calculateTotal()}</p>
 
       {/* Example products */}
       <h2>Available Products</h2>
-      <button onClick={() => addItemToCart({ name: 'Product 1', price: 10.99 })}>
-        Add Product 1 to Cart
+      <button onClick={() => addItemToCart({ name: 'bemari 520', price: 47000.00 })}>
+        Osta bemari
       </button>
-      <button onClick={() => addItemToCart({ name: 'Product 2', price: 20.49 })}>
-        Add Product 2 to Cart
+      <button onClick={() => addItemToCart({ name: 'mersu e250', price: 49000.00 })}>
+        Osta mersu
       </button>
     </div>
   );
