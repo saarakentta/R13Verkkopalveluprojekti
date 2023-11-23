@@ -5,6 +5,7 @@ import Navbar from "./components/navbar";
 import Dropdown from "./components/dropdown";
 import Content from "./components/content";
 import Footer from "./components/footer";
+import ShoppingCart from "./actioncomponents/shoppingcart";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
       </div>
       <div>
         <Content/>
+      </div>
+      <div>
+        <ShoppingCart/>
       </div>
       <div>
         <Footer/>
