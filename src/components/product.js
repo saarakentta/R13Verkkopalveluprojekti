@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
- 
+
 const tuotteet = {
   audi: {
     sedan: [
@@ -38,35 +38,37 @@ const tuotteet = {
     ],
   },
 };
- 
+
 function App() {
   const [selectedTuoteryhma, setSelectedTuoteryhma] = useState('audi-sedan');
- 
+
   const naytaTuoteryhma = (tuoteryhma) => {
     setSelectedTuoteryhma(tuoteryhma);
   };
- 
+
   return (
-<div className="App">
-<div id="tuoteryhmat">
-<button onClick={() => naytaTuoteryhma('audi-sedan')}>Audi Sedan</button>
-<button onClick={() => naytaTuoteryhma('audi-farmari')}>Audi Farmari</button>
-<button onClick={() => naytaTuoteryhma('bmw-sedan')}>BMW Sedan</button>
-<button onClick={() => naytaTuoteryhma('bmw-farmari')}>BMW Farmari</button>
-<button onClick={() => naytaTuoteryhma('mercedes-sedan')}>Mercedes Sedan</button>
-<button onClick={() => naytaTuoteryhma('mercedes-farmari')}>Mercedes Farmari</button>
-</div>
- 
+    <div className="App">
+      <div id="tuoteryhmat">
+        <button onClick={() => naytaTuoteryhma('audi-sedan')}>Audi Sedan</button>
+        <button onClick={() => naytaTuoteryhma('audi-farmari')}>Audi Farmari</button>
+        <button onClick={() => naytaTuoteryhma('bmw-sedan')}>BMW Sedan</button>
+        <button onClick={() => naytaTuoteryhma('bmw-farmari')}>BMW Farmari</button>
+        <button onClick={() => naytaTuoteryhma('mercedes-sedan')}>Mercedes Sedan</button>
+        <button onClick={() => naytaTuoteryhma('mercedes-farmari')}>Mercedes Farmari</button>
+      </div>
+
       <div id="tuotteet">
         {tuotteet[selectedTuoteryhma].map((tuote, index) => (
-<div key={index} className="tuote">
-<p><strong>{tuote.nimi}</strong></p>
-<p>{tuote.hinta}</p>
-</div>
+          <div key={index} className="tuote">
+            <p>
+              <strong>{tuote.nimi}</strong>
+            </p>
+            <p>{tuote.hinta}</p>
+          </div>
         ))}
-</div>
-</div>
+      </div>
+    </div>
   );
 }
- 
+
 export default App;
