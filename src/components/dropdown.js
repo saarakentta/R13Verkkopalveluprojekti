@@ -7,7 +7,7 @@ function AppDropdown() {
       <>
 
 <Dropdown data-bs-theme="dark">
-          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" className="custom-dropdown-toggle">
             Merkki
           </Dropdown.Toggle>
   
@@ -19,7 +19,7 @@ function AppDropdown() {
         </Dropdown>
         
         <Dropdown data-bs-theme="dark">
-          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" className="custom-dropdown-toggle">
             Käyttövoima
           </Dropdown.Toggle>
           <Dropdown.Menu>
@@ -29,7 +29,7 @@ function AppDropdown() {
         </Dropdown>
 
         <Dropdown data-bs-theme="dark">
-          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" className="custom-dropdown-toggle">
             Korimalli
           </Dropdown.Toggle>
   
@@ -41,7 +41,7 @@ function AppDropdown() {
         </Dropdown>
 
         <Dropdown data-bs-theme="dark">
-          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" className="custom-dropdown-toggle">
             Väri
           </Dropdown.Toggle>
   
@@ -55,7 +55,7 @@ function AppDropdown() {
         </Dropdown>
 
         <Dropdown data-bs-theme="dark">
-          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" className="custom-dropdown-toggle">
             Vuosimalli
           </Dropdown.Toggle>
   
@@ -68,7 +68,7 @@ function AppDropdown() {
         
   
         <Dropdown data-bs-theme="dark">
-          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary">
+          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" className="custom-dropdown-toggle">
             Hinta
           </Dropdown.Toggle>
   

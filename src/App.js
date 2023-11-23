@@ -17,11 +17,13 @@ function App() {
         <Navbar/>
         <ShoppingCart/>;
       </div>
+      <div class="dropandcontent">
       <div>
         <Dropdown/>
       </div>
       <div>
         <Content/>
+      </div>
       </div>
       <div>
         

@@ -1,17 +1,62 @@
 /*#053B50 #176B87 #64CCC5 #EEEEEE*/
 
 .header {
-  background-color:#176B87 ;
+  background-color:#64CCC5 ; 
+}
+.R13logo {
+  height: 180px;
+  display: inline-block;
 }
 .logo {
-  height: 250px;
-  
+  height: 120px;
+  display: inline-block;
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.dropandcontent{
+  display: flex;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 .content {
   height: auto;
   width: 80%;
 }
-
-.navbar {
-  background-color: #64CCC5 ;
+.custom-dropdown-toggle {
+  width: 200px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #176B87;
+}
+.footer {
+  display: flex;
+  padding-top: 10px;
+  background-color: #176B87;
+  color: white;
+  font-family: Arial;
+  font-size: medium;
+  height: 120px;
+  align-items: flex-start;
+}
+.follow-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+}
+.icons {
+  display: flex;
+}
+.space {
+  margin-left: 10px;
+}
+.footerlinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 40px;
 }
