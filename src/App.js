@@ -3,9 +3,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import Header from "./components/header";
 import Navbar from "./components/navbar";
 import Dropdown from "./components/dropdown";
-import Content from "./components/content";
 import Footer from "./components/footer";
 import ShoppingCart from "./actioncomponents/shoppingcart";
+import Products from "./components/products"
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         <Dropdown/>
       </div>
       <div>
-        <Content/>
+        <Products />
       </div>
       </div>
       <div>
