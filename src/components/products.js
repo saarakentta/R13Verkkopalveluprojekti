@@ -1,7 +1,6 @@
 import React, {useState, useEffect } from "react"
 import axios from "axios"
 import ProductCard from "./productCard"
-//import DropdownMenu from './dropdown'
 
 const Products = () => {
     const [products, setProducts] = useState([])

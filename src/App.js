@@ -6,6 +6,7 @@ import Dropdown from "./components/dropdown";
 import Footer from "./components/footer";
 import ShoppingCart from "./actioncomponents/shoppingcart";
 import Products from "./components/products"
+import ShoppingApp from "./actioncomponents/ShoppingApp";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       </div>
       <div>
         <Navbar/>
-        <ShoppingCart/>;
+        <ShoppingApp/>;
       </div>
       <div class="dropandcontent">
       <div>
