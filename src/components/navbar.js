@@ -10,7 +10,9 @@ function AppNavbar() {
     <div className="navbar">
       <Navbar bg="light" data-bs-theme="light">
         <Nav className="me-auto">
-          <Nav.Link href="#home">Etusivu</Nav.Link>
+          <Nav.Link>
+          <Link to="/">Etusivu</Link>
+          </Nav.Link>
         </Nav>
 
         <Nav className="cart">
