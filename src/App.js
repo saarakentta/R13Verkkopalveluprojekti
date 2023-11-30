@@ -7,6 +7,8 @@ import Footer from "./components/footer";
 import ShoppingCart from "./actioncomponents/shoppingcart";
 import Products from "./components/products";
 import ShoppingApp from "./actioncomponents/ShoppingApp";
+import Contact from "./components/contact";
+import Login from "./actioncomponents/login";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Routes>
             <Route path="" element={<Products />} />
             <Route path="shoppingcart" element={<ShoppingCart />} />
+            <Route path="contact"  element = {<Contact />} />
+            <Route path="login" element = {<Login />} />
           </Routes>
         </div>
       </div>
