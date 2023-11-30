@@ -13,7 +13,7 @@
   margin-left: 80px;
   margin-right: 80px;
 }
-.dropandcontent{
+.content {
   display: flex;
 }
 .navbar {
@@ -21,17 +21,13 @@
   align-items: center;
   width: 100%;
 }
-.content {
-  height: auto;
-  width: 80%;
-}
 .custom-dropdown-toggle {
   width: 200px;
   margin-bottom: 5px;
   margin-left: 10px;
   margin-right: 10px;
   background-color: #176B87;
-}
+  }
 .footer {
   display: flex;
   padding-top: 10px;

@@ -24,7 +24,7 @@ const Products = () => {
     }, [valittuMerkki])
 
 return (
-    <div className="d-flex flex-wrap">
+    <div className="d-flex flex-wrap" id='d-flex'>
       {products.map((product) => (
         <ProductCard product={product} />
       ))}
