@@ -2,13 +2,13 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Header from "./components/header";
 import Navbar from "./components/navbar";
-import Dropdown from "./components/dropdown";
 import Footer from "./components/footer";
 import ShoppingCart from "./actioncomponents/shoppingcart";
 import Products from "./components/products";
 import ShoppingApp from "./actioncomponents/ShoppingApp";
 import Contact from "./components/contact";
 import Login from "./actioncomponents/login";
+import Filters from "./components/filters"
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 
 function App() {
@@ -43,7 +43,10 @@ function App() {
       <Header />
       <Navbar />
       <div class='content'>
-        <Dropdown />
+      <Filters
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          onClearFilters={handleClearFilters} />
         <div>
           <Routes>
             <Route path="" element={<Products />} />
@@ -52,6 +55,9 @@ function App() {
             <Route path="login" element = {<Login />} />
           </Routes>
         </div>
+        <div>
+        <Products filters={filters} />
+      </div>
       </div>
 
       <Footer />
