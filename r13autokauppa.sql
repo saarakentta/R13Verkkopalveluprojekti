@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 04, 2023 at 12:18 PM
+-- Generation Time: Dec 04, 2023 at 12:21 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -20,50 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `r13autokauppa`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer_order`
---
-
-DROP TABLE IF EXISTS `customer_order`;
-CREATE TABLE IF NOT EXISTS `customer_order` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `order_date` datetime NOT NULL,
-  `customer_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `customer_id` (`customer_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `customer_order`
---
-
-INSERT INTO `customer_order` (`id`, `order_date`, `customer_id`) VALUES
-(1, '2023-11-24 19:27:41', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_line`
---
-
-DROP TABLE IF EXISTS `order_line`;
-CREATE TABLE IF NOT EXISTS `order_line` (
-  `order_id` int NOT NULL,
-  `product_id` int NOT NULL,
-  `quantity` int DEFAULT NULL,
-  PRIMARY KEY (`order_id`,`product_id`),
-  KEY `product_id` (`product_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `order_line`
---
-
-INSERT INTO `order_line` (`order_id`, `product_id`, `quantity`) VALUES
-(1, 3, 3);
 
 -- --------------------------------------------------------
 
