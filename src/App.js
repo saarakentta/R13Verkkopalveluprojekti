@@ -1,5 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+import React, { useState, useEffect } from 'react'
 import Header from "./components/header";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
