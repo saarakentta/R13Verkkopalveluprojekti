@@ -50,15 +50,12 @@ function App() {
           onClearFilters={handleClearFilters} />
         <div>
           <Routes>
-            <Route path="" element={<Products />} />
+            <Route path="" element={<Products filters={filters} />} />
             <Route path="shoppingcart" element={<ShoppingCart />} />
             <Route path="contact"  element = {<Contact />} />
             <Route path="login" element = {<Login />} />
           </Routes>
         </div>
-        <div>
-        <Products filters={filters} />
-      </div>
       </div>
 
       <Footer />
