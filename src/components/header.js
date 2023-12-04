@@ -7,9 +7,9 @@ function Header() {
       <div>
         <img src={"/images/R13.png"} className="R13logo"/>
         <span className="autologot">
-        <img src={"/images/audilogo3.png"} className="logo"/>
-        <img src={"/images/bmwlogo1.png"} className="logo"/>
-        <img src={"/images/MercedesLogo1.png"} className="logo"/>
+        <img src={"/images/audilogo.png"} className="logo"/>
+        <img src={"/images/bmwlogo.png"} className="logo"/>
+        <img src={"/images/Mercedes-BenzLogo.png"} className="logo"/>
         </span>
       </div>
     </div>
