@@ -12,6 +12,32 @@ import Login from "./actioncomponents/login";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 
 function App() {
+
+  const [filters, setFilters] = useState({
+    merkki: '',
+    korimalli: '',
+    vari: '',
+    kayttovoima: '',
+    hinta: '',
+  });
+
+  const handleFilterChange = (filterType, selectedValue) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterType]: selectedValue,
+    }));
+  }
+
+  const handleClearFilters = () => {
+    setFilters({
+      merkki: '',
+      korimalli: '',
+      vari: '',
+      kayttovoima: '',
+      hinta: '',
+    })
+  }
+
   return (
     <div>
       <Header />
