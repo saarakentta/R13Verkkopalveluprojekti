@@ -1,7 +1,7 @@
 /*#053B50 #176B87 #64CCC5 #EEEEEE*/
 
 .header {
-  background-color:#64CCC5 ; 
+  background-color:#64CCC5 ;
 }
 .R13logo {
   height: 180px;
@@ -26,13 +26,24 @@
   text-decoration: none;
 }
 
-.custom-dropdown-toggle {
+.custom-dropdown-toggle, .clear-filters-button {
   width: 200px;
   margin-bottom: 5px;
   margin-left: 10px;
   margin-right: 10px;
   background-color: #176B87;
   }
+.cardImg {
+    margin: 0 auto;
+    display: block;
+}
+.subtitle {
+    display: flex;
+    flex-direction: column;
+    height: 2.5rem;
+    overflow: hidden;
+    justify-content: center;
+}
 .footer {
   display: flex;
   padding-top: 10px;
