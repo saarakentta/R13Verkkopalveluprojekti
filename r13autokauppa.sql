@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 04, 2023 at 12:04 PM
+-- Generation Time: Dec 04, 2023 at 12:18 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -20,34 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `r13autokauppa`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
---
-
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE IF NOT EXISTS `customer` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_swedish_ci DEFAULT NULL,
-  `last_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_swedish_ci DEFAULT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_swedish_ci DEFAULT NULL,
-  `pw` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_swedish_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`id`, `first_name`, `last_name`, `username`, `pw`) VALUES
-(1, 'Anssi', 'Asiakas', NULL, NULL),
-(2, 'Matti', 'Meikäläinen', NULL, NULL),
-(3, 'Maija', 'Meikäläinen', NULL, NULL),
-(4, 'John', 'Doe', NULL, NULL),
-(5, 'Jane', 'Doe', NULL, NULL);
 
 -- --------------------------------------------------------
 
