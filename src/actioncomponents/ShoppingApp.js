@@ -1,4 +1,3 @@
-// ShoppingApp.js
 import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import ShoppingCart from './shoppingcart';
@@ -22,12 +21,28 @@ const ShoppingApp = () => {
   }, []); // Empty dependency array ensures the effect runs only once
 
   const addToCart = (product) => {
-    setCart([...cart, { ...product, quantity: 1 }]);
+    const existingItem = cart.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      // If the product is already in the cart, update its quantity
+      updateCart(product.id, 1);
+    } else {
+      // Otherwise, add the product to the cart with model and price
+      setCart([
+        ...cart,
+        {
+          id: product.id,
+          model: product.malli,
+          price: product.hinta,
+          quantity: 1,
+        },
+      ]);
+    }
   };
 
   const updateCart = (productId, quantityChange) => {
     const updatedCart = cart.map((item) =>
-      item.rekisteritunnus === productId
+      item.id === productId
         ? { ...item, quantity: item.quantity + quantityChange }
         : item
     );
