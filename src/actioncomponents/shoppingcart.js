@@ -7,8 +7,8 @@ const ShoppingCart = ({ cart, updateCart, removeItem, checkout }) => {
       <h2>Shopping Cart</h2>
       {cart && cart.map((item) => (
         <div key={item.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
-          <h3>{item.name}</h3>
-          <p>Quantity: {item.quantity}</p>
+          <h3>{item.id}</h3>
+          <p>Korissa: {item.malli}</p>
           <button onClick={() => updateCart(item.id, -1)}>Remove One</button>
         </div>
       ))}

@@ -1,3 +1,4 @@
+// ShoppingApp.js
 import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import ShoppingCart from './shoppingcart';
@@ -18,16 +19,17 @@ const ShoppingApp = () => {
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []);
 
   const addToCart = (product) => {
+    // Check if the product is already in the cart
     const existingItem = cart.find((item) => item.id === product.id);
 
     if (existingItem) {
       // If the product is already in the cart, update its quantity
       updateCart(product.id, 1);
     } else {
-      // Otherwise, add the product to the cart with model and price
+      // Otherwise, add the product to the cart with its details
       setCart([
         ...cart,
         {
