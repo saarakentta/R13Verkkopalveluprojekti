@@ -13,9 +13,9 @@ const ShoppingCart = ({ cart, updateCart, checkout }) => {
       {cart && cart.map((item) => (
         <div key={item.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
           <h3>{item.malli}</h3>
-          <p>Hinta: {item.price}</p>
+          <p>Hinta: {item.price}€</p>
           <p>Määrä: {item.quantity}</p>
-          <p>Yhteensä: {item.price * item.quantity}</p>
+          <p>Yhteensä: {item.price * item.quantity}€</p>
           <button onClick={() => updateCart(item.id, -1)}>Poista</button>
         </div>
       ))}
