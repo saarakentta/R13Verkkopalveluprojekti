@@ -34,7 +34,7 @@ const ShoppingApp = () => {
         ...cart,
         {
           id: product.id,
-          model: product.malli,
+          malli: product.malli, // Use 'malli' instead of 'model'
           price: product.hinta,
           quantity: 1,
         },
