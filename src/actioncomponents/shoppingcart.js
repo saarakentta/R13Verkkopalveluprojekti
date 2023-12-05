@@ -12,7 +12,7 @@ const ShoppingCart = ({ cart, updateCart, removeItem, checkout }) => {
           <div key={item.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
             {/* Display 'malli' instead of 'id' */}
             <h3>{item.malli}</h3>
-            <p>Korissa: {item.malli}</p>
+            <p>Hinta: {item.price}</p>
             <button onClick={() => updateCart(item.id, -1)}>Remove One</button>
           </div>
         );
