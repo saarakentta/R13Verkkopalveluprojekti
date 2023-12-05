@@ -19,7 +19,7 @@ const ShoppingCart = ({ cart, updateCart, checkout }) => {
           <button onClick={() => updateCart(item.id, -1)}>Poista</button>
         </div>
       ))}
-      <p>Yhteishinta: {calculateTotalPrice()}</p>
+      <p>Yhteishinta: {calculateTotalPrice()}€</p>
       <button onClick={checkout} style={{ marginTop: '10px' }}>Kassalle</button>
     </div>
   );
