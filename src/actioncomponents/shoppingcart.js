@@ -9,7 +9,7 @@ const ShoppingCart = ({ cart, updateCart, checkout }) => {
 
   return (
     <div>
-      <h2>Shopping Cart</h2>
+      <h2>Ostoskori</h2>
       {cart && cart.map((item) => (
         <div key={item.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
           <h3>{item.malli}</h3>
