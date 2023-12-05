@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 const Contact = () => {
-  const [feedback, setFeedback] = useState(""); // State for feedback input
+  const [feedback, setFeedback] = useState(""); 
+  const [feedbackSent, setFeedbackSent] = useState(false); 
 
   const contactContainerStyle = {
     maxWidth: "400px",
@@ -39,15 +40,23 @@ const Contact = () => {
     cursor: "pointer",
   };
 
+  const feedbackSentStyle = {
+    color: "green",
+    marginTop: "10px",
+  };
+
   const handleFeedbackChange = (e) => {
     setFeedback(e.target.value);
+    setFeedbackSent(false); 
   };
 
   const handleSendButtonClick = () => {
-    // Implement logic to send feedback
+   
     console.log("Feedback sent:", feedback);
-    // You can add API call or other logic here to handle the feedback
-    setFeedback(""); // Clear the feedback input after sending
+    
+
+    setFeedbackSent(true); 
+    setFeedback(""); 
   };
 
   return (
@@ -66,6 +75,7 @@ const Contact = () => {
       <button style={sendButtonStyle} onClick={handleSendButtonClick}>
         Lähetä
       </button>
+      {feedbackSent && <p style={feedbackSentStyle}>Palaute lähetetty</p>}
     </div>
   );
 };
