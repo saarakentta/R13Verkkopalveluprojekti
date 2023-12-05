@@ -24,9 +24,9 @@ const ShoppingApp = () => {
   const addToCart = (product) => {
     // Check if the product is already in the cart
     const existingItem = cart.find((item) => item.id === product.id);
-
+  
     if (existingItem) {
-      // If the product is already in the cart, update its quantity
+      // If the product is already in the cart, update its quantity to 1 (or any desired value)
       updateCart(product.id, 1);
     } else {
       // Otherwise, add the product to the cart with its details
@@ -34,13 +34,14 @@ const ShoppingApp = () => {
         ...cart,
         {
           id: product.id,
-          malli: product.malli, // Use 'malli' instead of 'model'
+          malli: product.malli,
           price: product.hinta,
           quantity: 1,
         },
       ]);
     }
   };
+  
 
   const updateCart = (productId, quantityChange) => {
     const updatedCart = cart.map((item) =>
