@@ -19,15 +19,33 @@ const ShoppingApp = () => {
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []);
 
   const addToCart = (product) => {
-    setCart([...cart, { ...product, quantity: 1 }]);
+    // Check if the product is already in the cart
+    const existingItem = cart.find((item) => item.id === product.id);
+  
+    if (existingItem) {
+      // If the product is already in the cart, update its quantity to 1 (or any desired value)
+      updateCart(product.id, 1);
+    } else {
+      // Otherwise, add the product to the cart with its details
+      setCart([
+        ...cart,
+        {
+          id: product.id,
+          malli: product.malli,
+          price: product.hinta,
+          quantity: 1,
+        },
+      ]);
+    }
   };
+  
 
   const updateCart = (productId, quantityChange) => {
     const updatedCart = cart.map((item) =>
-      item.rekisteritunnus === productId
+      item.id === productId
         ? { ...item, quantity: item.quantity + quantityChange }
         : item
     );

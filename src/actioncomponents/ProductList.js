@@ -6,7 +6,7 @@ const ProductList = ({ products, addToCart }) => {
     <div>
       <h2>Product List</h2>
       {products.map((product) => (
-        <div key={product.rekisteritunnus} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
+        <div key={product.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
           <h3>{product.merkki} - {product.malli}</h3>
           <p>Price: {product.hinta}</p>
           <button onClick={() => addToCart(product)}>Add to Cart</button>
