@@ -12,6 +12,7 @@ const upload = multer({ dest: "uploads/" });
 
 var express = require('express');
 const e = require('cors');
+
 var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -79,14 +80,15 @@ app.get('/categories', async (req, res) => {
     }
 });
 
+
 app.get('/customer', async(req,res) => {
 
     //Get the bearer token from authorization header
-    const token = req.headers.authorization.split(' ')[1];
+    const token = req.headers.authorization?.split(' ')[1];
 
     //Verify the token. Verified token contains username
     try{
-        const username = jwt.verify(token, 'mysecretkey').username;
+        const username = jwt.verify(token, process.env.JWT_KEY).username;
         const connection = await mysql.createConnection(conf);
         const [rows] = await connection.execute('SELECT first_name fname, last_name lname, username FROM customer WHERE username=?',[username]);
         res.status(200).json(rows[0]);

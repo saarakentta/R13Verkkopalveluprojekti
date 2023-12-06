@@ -10,7 +10,7 @@ import ShoppingApp from "./actioncomponents/ShoppingApp";
 import Contact from "./components/contact";
 import Login from "./actioncomponents/login";
 import Filters from "./components/filters"
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 
 function App() {
 
@@ -43,7 +43,7 @@ function App() {
     <div>
       <Header />
       <Navbar />
-      <div class='content'>
+      <div className='content'>
       <Filters
           filters={filters}
           onFilterChange={handleFilterChange}

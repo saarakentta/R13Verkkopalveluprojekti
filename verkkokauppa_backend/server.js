@@ -7,6 +7,10 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const multer = require('multer');
+const upload = multer({ dest: "uploads/" });
 
 const conf = {
     host: process.env.DB_HOST,
@@ -115,3 +119,58 @@ app.get('/filter-options/:column', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
+
+/**
+ * Registers user. Supports urlencoded and multipart
+ */
+app.post('/register', upload.none(), async (req,res) => {
+  const fname = req.body.fname;
+  const lname = req.body.lname;
+  const uname = req.body.username;
+  const pw = req.body.pw;
+
+  try {
+      const connection = await mysql.createConnection(conf);
+
+      const pwHash = await bcrypt.hash(pw, 10);
+
+      const [rows] = await connection.execute('INSERT INTO customer(first_name,last_name,username,pw) VALUES (?,?,?,?)',[fname,lname,uname,pwHash]);
+
+      res.status(200).end();
+
+  } catch (err) {
+      res.status(500).json({ error: err.message });
+  }
+
+});
+
+/**
+* Checks the username and password and returns jwt authentication token if authorized. 
+* Supports urlencoded or multipart
+*/
+app.post('/login', upload.none(), async (req, res) => {
+  const username = req.body.username;
+  const pw = req.body.pw;
+
+
+  try {
+      const connection = await mysql.createConnection(conf);
+
+      const [rows] = await connection.execute('SELECT pw FROM customer WHERE username=?', [username]);
+
+      if(rows.length > 0){
+          const isAuth = await bcrypt.compare(pw, rows[0].pw);
+          if(isAuth){
+              const token = jwt.sign({username: username}, 'mysecretkey');
+              res.status(200).json({jwtToken: token});
+          }else{
+              res.status(401).end('User not authorized');
+          }
+      }else{
+          res.status(404).send('User not found');
+      }
+
+  } catch (err) {
+      res.status(500).json({ error: err.message });
+  }
+});
