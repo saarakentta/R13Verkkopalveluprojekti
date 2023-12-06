@@ -152,7 +152,6 @@ app.post('/login', upload.none(), async (req, res) => {
   const username = req.body.username;
   const pw = req.body.pw;
 
-
   try {
       const connection = await mysql.createConnection(conf);
 
