@@ -70,6 +70,15 @@ INSERT INTO `product` (`id`, `merkki`, `malli`, `korimalli`, `vuosimalli`, `hint
 (22, 'höpöhöpö', '', '', 0, NULL, '', NULL, '', 0);
 COMMIT;
 
+INSERT INTO `customer` (`id`, `first_name`, `last_name`, `username`, `pw`) VALUES 
+(NULL, 'Anssi', 'Asiakas', NULL, NULL), 
+  (NULL, 'Matti', 'Meikäläinen', NULL, NULL), 
+  (NULL, 'Maija', 'Meikäläinen', NULL, NULL), 
+  (NULL, 'John', 'Doe', NULL, NULL), 
+  (NULL, 'Jane', 'Doe', NULL, NULL), 
+  (NULL, 'Homer', 'Simpson', 'homer', '$2b$10$zeZRehkZ2e/wXbyZgvISluZ5iW2qZhknDVwG1vo3phsptAZw3D.sO'), 
+  (NULL, 'Lisa', 'Simpson', 'lisa', '$2b$10$wLE2iHfOVT..PkAaw.jm1uGwkyhDFMRLSXq7VuFge4P21udijJcBi');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
