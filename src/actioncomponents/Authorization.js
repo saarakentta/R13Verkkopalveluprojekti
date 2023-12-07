@@ -1,4 +1,4 @@
-import Login from './Login';
+import Login from './login';
 import CustomerInfo from './CustomerInfo';
 import { jwtToken } from '../components/signals/TokenSignal';
 
