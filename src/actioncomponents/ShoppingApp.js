@@ -6,6 +6,7 @@ import ShoppingCart from './shoppingcart';
 const ShoppingApp = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [orderStatus, setOrderStatus] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,13 +69,20 @@ const ShoppingApp = () => {
 
       if (response.ok) {
         console.log('Order placed successfully!');
+        setOrderStatus('Order placed successfully!');
         setCart([]);
+
+        setTimeout(() => {
+          setOrderStatus('');
+        }, 3000);
       } else {
         const errorMessage = await response.text();
         console.error('Failed to place order:', errorMessage);
+        setOrderStatus(`Failed to place order: ${errorMessage}`);
       }
     } catch (error) {
       console.error('Error during checkout:', error.message);
+      setOrderStatus(`Error during checkout: ${error.message}`);
     }
   };
 
@@ -83,6 +91,8 @@ const ShoppingApp = () => {
       {/* Pass the addToCart function to the Products component */}
       <Products products={products} addToCart={addToCart} />
       <ShoppingCart cart={cart} updateCart={updateCart} checkout={checkout} />
+      {cart.length === 0 && !orderStatus && <p>Cart is empty</p>}
+      {orderStatus && <p>{orderStatus}</p>}
     </div>
   );
 };
