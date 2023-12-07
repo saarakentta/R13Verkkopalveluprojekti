@@ -192,3 +192,17 @@ app.get("/customer", async (req, res) => {
     res.status(403).send("Access forbidden.");
   }
 });
+
+app.post('/api/checkout', async (req, res) => {
+  const { body } = req;
+
+  const cart = body.cart;
+
+
+  try {
+   
+    res.status(200).json({ message: 'Order placed successfully!' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});

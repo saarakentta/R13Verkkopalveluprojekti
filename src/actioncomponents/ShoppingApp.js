@@ -11,10 +11,13 @@ const ShoppingApp = () => {
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:3001/products');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch products: ${response.statusText}`);
+        }
         const data = await response.json();
         setProducts(data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error.message);
       }
     };
 
@@ -22,14 +25,11 @@ const ShoppingApp = () => {
   }, []);
 
   const addToCart = (product) => {
-    // Check if the product is already in the cart
     const existingItem = cart.find((item) => item.id === product.id);
 
     if (existingItem) {
-      // If the product is already in the cart, update its quantity to 1 (or any desired value)
       updateCart(product.id, 1);
     } else {
-      // Otherwise, add the product to the cart with its details
       setCart([
         ...cart,
         {
@@ -45,7 +45,7 @@ const ShoppingApp = () => {
   const updateCart = (productId, quantityChange) => {
     const updatedCart = cart.map((item) =>
       item.id === productId
-        ? { ...item, quantity: item.quantity + quantityChange }
+        ? { ...item, quantity: Math.max(0, item.quantity + quantityChange) }
         : item
     );
 
@@ -53,8 +53,9 @@ const ShoppingApp = () => {
   };
 
   const checkout = async () => {
-    // Implement checkout logic here
     try {
+      console.log('Sending checkout request:', JSON.stringify(cart));
+
       const response = await fetch('http://localhost:3001/api/checkout', {
         method: 'POST',
         headers: {
@@ -63,14 +64,17 @@ const ShoppingApp = () => {
         body: JSON.stringify(cart),
       });
 
+      console.log('Checkout response:', response);
+
       if (response.ok) {
         console.log('Order placed successfully!');
         setCart([]);
       } else {
-        console.error('Failed to place order:', response.statusText);
+        const errorMessage = await response.text();
+        console.error('Failed to place order:', errorMessage);
       }
     } catch (error) {
-      console.error('Error during checkout:', error);
+      console.error('Error during checkout:', error.message);
     }
   };
 
