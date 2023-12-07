@@ -1,6 +1,6 @@
 // ShoppingApp.js
 import React, { useState, useEffect } from 'react';
-import ProductList from './ProductList';
+import Products from '../components/products';
 import ShoppingCart from './shoppingcart';
 
 const ShoppingApp = () => {
@@ -24,7 +24,7 @@ const ShoppingApp = () => {
   const addToCart = (product) => {
     // Check if the product is already in the cart
     const existingItem = cart.find((item) => item.id === product.id);
-  
+
     if (existingItem) {
       // If the product is already in the cart, update its quantity to 1 (or any desired value)
       updateCart(product.id, 1);
@@ -41,7 +41,6 @@ const ShoppingApp = () => {
       ]);
     }
   };
-  
 
   const updateCart = (productId, quantityChange) => {
     const updatedCart = cart.map((item) =>
@@ -77,7 +76,8 @@ const ShoppingApp = () => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-      <ProductList products={products} addToCart={addToCart} />
+      {/* Pass the addToCart function to the Products component */}
+      <Products products={products} addToCart={addToCart} />
       <ShoppingCart cart={cart} updateCart={updateCart} checkout={checkout} />
     </div>
   );
