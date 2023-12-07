@@ -8,9 +8,11 @@ import ShoppingCart from "./actioncomponents/shoppingcart";
 import Products from "./components/products";
 import ShoppingApp from "./actioncomponents/ShoppingApp";
 import Contact from "./components/contact";
-import Login from "./actioncomponents/login";
+import Login from "./actioncomponents/Login";
+import CustomerInfo from "./actioncomponents/CustomerInfo";
 import Filters from "./components/filters"
 import { Route, Routes, Link } from "react-router-dom";
+import Authorization from "./actioncomponents/Authorization";
 
 function App() {
 
@@ -53,7 +55,7 @@ function App() {
             <Route path="" element={<Products filters={filters} />} />
             <Route path="shoppingcart" element={<ShoppingApp />} />
             <Route path="contact"  element = {<Contact />} />
-            <Route path="login" element = {<Login />} />
+            <Route path="login" element = {<Authorization />} />
           </Routes>
         </div>
       </div>

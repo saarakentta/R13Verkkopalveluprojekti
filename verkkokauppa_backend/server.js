@@ -149,27 +149,46 @@ app.post('/register', upload.none(), async (req,res) => {
 * Supports urlencoded or multipart
 */
 app.post('/login', upload.none(), async (req, res) => {
-  const username = req.body.username;
+  const uname = req.body.username;
   const pw = req.body.pw;
 
   try {
       const connection = await mysql.createConnection(conf);
 
-      const [rows] = await connection.execute('SELECT pw FROM customer WHERE username=?', [username]);
+      const [rows] = await connection.execute('SELECT pw FROM customer WHERE username=?', [uname]);
 
       if(rows.length > 0){
           const isAuth = await bcrypt.compare(pw, rows[0].pw);
           if(isAuth){
-              const token = jwt.sign({username: username}, 'mysecretkey');
+              const token = jwt.sign({username: uname}, process.env.JWT_KEY);
               res.status(200).json({jwtToken: token});
           }else{
-              res.status(401).end('User not authorized');
+              res.status(401).end('Wrong password!');
           }
       }else{
           res.status(404).send('User not found');
-      }
+      } 
 
   } catch (err) {
       res.status(500).json({ error: err.message });
+  }
+});
+
+app.get("/customer", async (req, res) => {
+  //Get the bearer token from authorization header
+  const token = req.headers.authorization?.split(" ")[1];
+
+  //Verify the token. Verified token contains username
+  try {
+    const username = jwt.verify(token, process.env.JWT_KEY).username;
+    const connection = await mysql.createConnection(conf);
+    const [rows] = await connection.execute(
+      "SELECT first_name fname, last_name lname, username FROM customer WHERE username=?",
+      [username]
+    );
+    res.status(200).json(rows[0]);
+  } catch (err) {
+    console.log(err.message);
+    res.status(403).send("Access forbidden.");
   }
 });
