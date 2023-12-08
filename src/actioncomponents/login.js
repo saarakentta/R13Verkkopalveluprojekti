@@ -5,6 +5,7 @@ import { jwtToken } from "../components/signals/TokenSignal";
 function Login() {
   const [username, setUsername] = useState("");
   const [pw, setPw] = useState("");
+  const [loginFailed, setLoginFailed] = useState(false);
 
   function login() {
     axios
@@ -14,8 +15,10 @@ function Login() {
         // Tyhjennä kentät kirjautumisen jälkeen
         setUsername("");
         setPw("");
+        setLoginFailed(false);
       })
       .catch((error) => console.log(error.message));
+    setLoginFailed(true);
   }
 
   return (
@@ -23,7 +26,8 @@ function Login() {
       <h2>Kirjaudu sisään</h2>
       <div>
         <label>Käyttäjätunnus:</label>
-        <input className="inputlogin"
+        <input
+          className="inputlogin"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Käyttäjätunnus"
@@ -31,14 +35,22 @@ function Login() {
       </div>
       <div>
         <label>Salasana:</label>
-        <input className="inputlogin"
+        <input
+          className="inputlogin"
           value={pw}
           onChange={(e) => setPw(e.target.value)}
           placeholder="Salasana"
         />
         <br />
-        <button className="loginbutton" onClick={login}>Login</button>
+        <button className="loginbutton" onClick={login}>
+          Login
+        </button>
       </div>
+      {loginFailed && (
+        <p style={{ color: "red" }}>
+          Kirjautuminen epäonnistui. Tarkista käyttäjätunnus ja salasana.
+        </p>
+      )}
     </div>
   );
 }
