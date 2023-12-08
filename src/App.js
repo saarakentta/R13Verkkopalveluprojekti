@@ -8,6 +8,7 @@ import ShoppingCart from "./actioncomponents/shoppingcart";
 import Products from "./components/products";
 import ShoppingApp from "./actioncomponents/ShoppingApp";
 import Contact from "./components/contact";
+import Register from "./actioncomponents/Register";
 import Filters from "./components/filters"
 import { Route, Routes, Link } from "react-router-dom";
 import Authorization from "./actioncomponents/Authorization";
@@ -54,6 +55,7 @@ function App() {
             <Route path="shoppingcart" element={<ShoppingApp />} />
             <Route path="contact"  element = {<Contact />} />
             <Route path="login" element = {<Authorization />} />
+            <Route path="register" element = {<Register />} />
           </Routes>
         </div>
       </div>

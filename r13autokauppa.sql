@@ -70,6 +70,15 @@ INSERT INTO `product` (`id`, `merkki`, `malli`, `korimalli`, `vuosimalli`, `hint
 (22, 'höpöhöpö', '', '', 0, NULL, '', NULL, '', 0);
 COMMIT;
 
+DROP TABLE IF EXISTS customer;
+CREATE TABLE customer(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    username VARCHAR(255) UNIQUE,
+    pw VARCHAR(255)
+);
+
 INSERT INTO `customer` (`id`, `first_name`, `last_name`, `username`, `pw`) VALUES 
 (NULL, 'Anssi', 'Asiakas', NULL, NULL), 
   (NULL, 'Matti', 'Meikäläinen', NULL, NULL), 

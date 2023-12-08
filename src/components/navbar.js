@@ -29,6 +29,11 @@ function AppNavbar() {
             </Link>
           </Nav.Link>
           <Nav.Link>
+            <Link className="navbarLink" to="/register">
+              Rekisteröidy
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
             <Link className="navbarLink" to="/shoppingcart">
               Ostoskori <FontAwesomeIcon icon={faShoppingCart} />
             </Link>
