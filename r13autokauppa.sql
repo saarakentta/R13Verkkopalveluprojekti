@@ -86,6 +86,20 @@ INSERT INTO `customer` (`id`, `first_name`, `last_name`, `username`, `pw`) VALUE
 (NULL, 'Lisa', 'Simpson', 'lisa', '$2b$10$wLE2iHfOVT..PkAaw.jm1uGwkyhDFMRLSXq7VuFge4P21udijJcBi'), 
 (NULL, 'Marge', 'Simpson', 'marge', '$2b$10$r6/WFt1pACtgCXTppl0C5uPbBjLkY6P4J6MI2MJlLr71Ow/ejZ.si');
 
+DROP TABLE IF EXISTS feedback;
+CREATE TABLE feedback(  
+    id int NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'Primary Key',
+    nickname VARCHAR(255),
+    feedback_text TEXT
+);
+
+INSERT INTO `feedback` (`id`, `nickname`, `feedback_text`) VALUES 
+(NULL, 'HomerSimpson', 'Kiitos hyvästä palvelusta!'), 
+(NULL, 'Marge', 'Kiitos hyvistä kaupoista!'), 
+(NULL, 'Pekka Pouta', 'Aurinkoinen kauppahetki sateen keskellä! '), 
+(NULL, 'Pipsa Possu', 'Röh röh saatiin ostettua hieno uusi auto! '),
+(NULL, 'Baby Simpson', 'Tympeitä myyjiä. ');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

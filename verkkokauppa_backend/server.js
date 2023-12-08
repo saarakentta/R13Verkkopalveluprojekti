@@ -206,3 +206,40 @@ app.post('/api/checkout', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+/**
+ * Adds new feedback. 
+ */
+app.post('/contact/add', upload.none(), async (req,res) => {
+  const nickname = req.body.nickname;
+  const feedback = req.body.feedback_text;
+
+  try {
+      const connection = await mysql.createConnection(conf);
+
+      const [rows] = await connection.execute('INSERT INTO feedback(nickname, feedback_text) VALUES (?,?)',[nickname, feedback]);
+
+      res.status(200).end();
+
+  } catch (err) {
+      res.status(500).json({ error: err.message });
+  }
+
+});
+
+/**
+ * Gets all feedback. 
+ */
+
+app.get('/contact/all', async (req,res) =>{
+
+    try {
+      const connection = await mysql.createConnection(conf);
+  
+      const [rows] = await connection.execute('SELECT * FROM feedback');
+      res.status(200).json(rows);
+  
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });

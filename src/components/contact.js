@@ -1,83 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import GetFeedback from "../actioncomponents/GetFeedback";
 
-const Contact = () => {
-  const [feedback, setFeedback] = useState(""); 
-  const [feedbackSent, setFeedbackSent] = useState(false); 
+function Contact() {
+  const [nickname, setNickname] = useState("");
+  const [feedback_text, setFeedback_text] = useState("");
+  const [feedbackSent, setFeedbackSent] = useState(false);
+  const [feedbackData, setFeedbackData] = useState([]);
 
-  const contactContainerStyle = {
-    maxWidth: "400px",
-    margin: "auto",
-    textAlign: "center",
-    padding: "20px",
-    border: "1px solid #ccc",
-    borderRadius: "8px",
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-    backgroundColor: "#f8f8f8",
-  };
+  useEffect(() => {
+    // Tämä efekti suoritetaan, kun feedbackSent-muuttuja muuttuu
+    if (feedbackSent) {
+      // Haetaan palautteet tietokannasta ja päivitetään tila
+      fetchFeedback();
+    }
+  }, [feedbackSent]);
 
-  const headingStyle = {
-    color: "#333",
-  };
+  async function fetchFeedback() {
+    try {
+      const response = await axios.get("http://localhost:3001/contact/all");
+      setFeedbackData(response.data);
+    } catch (error) {
+      console.error("Error fetching feedback.", error.message);
+    } finally {
+      setFeedbackSent(false);
+    }
+  }
 
-  const infoStyle = {
-    fontSize: "1.1em",
-    marginBottom: "10px",
-  };
-
-  const feedbackInputStyle = {
-    width: "100%",
-    padding: "8px",
-    boxSizing: "border-box",
-    marginBottom: "10px",
-  };
-
-  const sendButtonStyle = {
-    backgroundColor: "#4CAF50",
-    color: "white",
-    padding: "10px 15px",
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-  };
-
-  const feedbackSentStyle = {
-    color: "green",
-    marginTop: "10px",
-  };
-
-  const handleFeedbackChange = (e) => {
-    setFeedback(e.target.value);
-    setFeedbackSent(false); 
-  };
-
-  const handleSendButtonClick = () => {
-   
-    console.log("Feedback sent:", feedback);
-    
-
-    setFeedbackSent(true); 
-    setFeedback(""); 
-  };
+  function feedback() {
+    axios
+      .post("http://localhost:3001/contact/add", { nickname, feedback_text })
+      .then(async (resp) => {
+        console.log("Feedback sent!");
+         // Tyhjennä kentät kirjautumisen jälkeen
+         setNickname("");
+         setFeedback_text("");
+        //Päivitä palautteet heti
+       await fetchFeedback();
+        setFeedbackSent(true);
+      })
+      .catch((error) => console.log(error.message));
+  }
 
   return (
-    <div style={contactContainerStyle}>
-      <h2 style={headingStyle}>Yhteystiedot</h2>
-      <p style={infoStyle}>Sähköposti: info@r13autokauppa.fi</p>
-      <p style={infoStyle}>Puhelin: 040123123123</p>
-      <p style={infoStyle}>Osoite: Autokaupantie 1, 90123 Oulu</p>
-      <h2 style={headingStyle}>Jätä palautteesi</h2>
-      <textarea
-        style={feedbackInputStyle}
-        placeholder="Kirjoita palautteesi tähän..."
-        value={feedback}
-        onChange={handleFeedbackChange}
-      />
-      <button style={sendButtonStyle} onClick={handleSendButtonClick}>
-        Lähetä
-      </button>
-      {feedbackSent && <p style={feedbackSentStyle}>Palaute lähetetty</p>}
+    <div className="main-container">
+      <div className="contact-container">
+        <h2 className="heading">Yhteystiedot</h2>
+        <p className="info">Sähköposti: info@r13autokauppa.fi</p>
+        <p className="info">Puhelin: 040123123123</p>
+        <p className="info">Osoite: Autokaupantie 1, 90123 Oulu</p>
+        <h2 className="heading">Jätä palautteesi</h2>
+        <label>Nimimerkki:</label>
+        <input
+          className="nickname-input"
+          type="text"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+        ></input>
+        <textarea
+          className="feedback-input"
+          placeholder="Kirjoita palautteesi tähän..."
+          value={feedback_text}
+          onChange={(e) => setFeedback_text(e.target.value)}
+        />
+        <button onClick={feedback}> Lähetä </button>
+        {feedbackSent && <p className="feedback-sent">Palaute lähetetty</p>}
+      </div>
+      <GetFeedback feedbackData={feedbackData} />
     </div>
   );
-};
+}
 
 export default Contact;
