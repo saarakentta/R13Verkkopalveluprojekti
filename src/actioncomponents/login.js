@@ -1,9 +1,8 @@
-import { useState } from "react"
+import { useState } from "react";
 import axios from "axios";
 import { jwtToken } from "../components/signals/TokenSignal";
 
 function Login() {
-
   const [username, setUsername] = useState("");
   const [pw, setPw] = useState("");
 
@@ -18,19 +17,29 @@ function Login() {
       })
       .catch((error) => console.log(error.message));
   }
-  
+
   return (
-        <div>
-          <h2>Kirjaudu sisään</h2>
-          <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          ></input>
-          <br />
-          <input value={pw} onChange={(e) => setPw(e.target.value)} />
-          <br />
-          <button onClick={login}>Login</button>
-        </div>
+    <div className="login">
+      <h2>Kirjaudu sisään</h2>
+      <div>
+        <label>Käyttäjätunnus:</label>
+        <input className="inputlogin"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Käyttäjätunnus"
+        ></input>
+      </div>
+      <div>
+        <label>Salasana:</label>
+        <input className="inputlogin"
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
+          placeholder="Salasana"
+        />
+        <br />
+        <button className="loginbutton" onClick={login}>Login</button>
+      </div>
+    </div>
   );
 }
 
