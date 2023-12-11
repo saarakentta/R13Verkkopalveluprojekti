@@ -100,6 +100,25 @@ INSERT INTO `feedback` (`id`, `nickname`, `feedback_text`) VALUES
 (NULL, 'Pipsa Possu', 'Röh röh saatiin ostettua hieno uusi auto! '),
 (NULL, 'Baby Simpson', 'Tympeitä myyjiä. ');
 
+CREATE TABLE customer_order(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_date DATETIME NOT NULL,
+    customer_id INT,
+    FOREIGN KEY (customer_id) REFERENCES customer(id);
+
+INSERT INTO `customer_order` (`id`, `order_date`, `customer_id`) VALUES (NULL, '2023-11-24 19:27:41', '1');
+
+CREATE TABLE order_line(
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    PRIMARY KEY (order_id, product_id),
+    FOREIGN KEY (order_id) REFERENCES customer_order(id),
+    FOREIGN KEY (product_id) REFERENCES product(id)
+);
+
+INSERT INTO `order_line` (`order_id`, `product_id`, `quantity`) VALUES ('1', '3', '3')
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
