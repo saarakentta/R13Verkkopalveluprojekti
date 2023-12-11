@@ -2,6 +2,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Header from "./components/header";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
@@ -12,7 +14,6 @@ import { Route, Routes } from "react-router-dom";
 import Contact from "./components/contact";
 import Authorization from "./actioncomponents/Authorization";
 import Register from "./actioncomponents/Register";
-
 
 function App() {
   const [filters, setFilters] = useState({
@@ -43,6 +44,17 @@ function App() {
         ...prevCart,
         { ...product, quantity: 1, total: product.hinta }
       ]);
+
+      // Näytä lisätty ostoskoriin -viesti
+      toast.success('Lisätty ostoskoriin', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -60,6 +72,10 @@ function App() {
     );
   };
 
+  const emptyCart = () => {
+    setCart([]);
+  };
+  
   return (
     <div>
       <Header />
@@ -93,19 +109,21 @@ function App() {
               path="shoppingcart"
               element={
                 <ShoppingCart
-                  cart={cart}
-                  removeFromCart={removeFromCart}
-                  updateQuantity={updateQuantity}
-                />
+                cart={cart}
+                removeFromCart={removeFromCart}
+                updateQuantity={updateQuantity}
+                emptyCart={emptyCart}
+              />
               }
             />
             <Route path="" element={<Products filters={filters} />} />
-            <Route path="contact"  element = {<Contact />} />
-            <Route path="login" element = {<Authorization />} />
-            <Route path="register" element = {<Register />} />
+            <Route path="contact"  element={<Contact />} />
+            <Route path="login" element={<Authorization />} />
+            <Route path="register" element={<Register />} />
           </Routes>
         </div>
       </div>
+      <ToastContainer />
       <Footer />
     </div>
   );

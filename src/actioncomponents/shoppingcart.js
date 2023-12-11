@@ -1,7 +1,7 @@
 // ShoppingCart.js
 import React from 'react';
 
-const ShoppingCart = ({ cart, removeFromCart, updateQuantity }) => {
+const ShoppingCart = ({ cart, removeFromCart, updateQuantity, emptyCart }) => {
   // Calculate the total price of the shopping cart
   const calculateTotalPrice = () => {
     return cart.reduce((total, item) => total + item.total, 0);
@@ -10,6 +10,7 @@ const ShoppingCart = ({ cart, removeFromCart, updateQuantity }) => {
   return (
     <div>
       <h2>Ostoskori</h2>
+      <button onClick={emptyCart}>Tyhjennä ostoskori</button>
       {cart && cart.map((item) => (
         <div key={item.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
           <h3>{item.malli}</h3>
@@ -25,7 +26,7 @@ const ShoppingCart = ({ cart, removeFromCart, updateQuantity }) => {
           <button onClick={() => removeFromCart(item.id)}>Poista</button>
         </div>
       ))}
-     
+      
     </div>
   );
 };
