@@ -1,12 +1,12 @@
 // Products.js
-import '../App.css'
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import '../App.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 const Products = ({ filters, addToCart }) => {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -16,14 +16,14 @@ const Products = ({ filters, addToCart }) => {
         });
 
         if (response.data) {
-          setProducts(response.data)
+          setProducts(response.data);
         }
       } catch (error) {
-        console.error('Error fetching products:', error)
+        console.error('Error fetching products:', error);
       }
     };
 
-    getProducts()
+    getProducts();
   }, [filters]);
 
   return (
@@ -39,8 +39,8 @@ const Products = ({ filters, addToCart }) => {
               }}
               src={product.image_url || `/images/${product.merkki}logo.png`}
               onError={(e) => {
-                e.target.onerror = null
-                e.target.src = '/images/R13W.png'
+                e.target.onerror = null;
+                e.target.src = '/images/R13W.png';
               }}
               alt=''
             />
@@ -67,7 +67,7 @@ const Products = ({ filters, addToCart }) => {
         </Card>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

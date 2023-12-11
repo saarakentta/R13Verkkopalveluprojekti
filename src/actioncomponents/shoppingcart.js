@@ -1,10 +1,10 @@
 // ShoppingCart.js
 import React from 'react';
 
-const ShoppingCart = ({ cart, updateCart, checkout }) => {
+const ShoppingCart = ({ cart, removeFromCart, updateQuantity }) => {
   // Calculate the total price of the shopping cart
   const calculateTotalPrice = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total, item) => total + item.total, 0);
   };
 
   return (
@@ -13,14 +13,19 @@ const ShoppingCart = ({ cart, updateCart, checkout }) => {
       {cart && cart.map((item) => (
         <div key={item.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
           <h3>{item.malli}</h3>
-          <p>Hinta: {item.price}€</p>
+          <p>Hinta: {item.hinta}€</p>
           <p>Määrä: {item.quantity}</p>
-          <p>Yhteensä: {item.price * item.quantity}€</p>
-          <button onClick={() => updateCart(item.id, -1)}>Poista</button>
+          <p>Yhteensä: {item.total}€</p>
+          <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>
+            Vähennä
+          </button>
+          <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+            Lisää
+          </button>
+          <button onClick={() => removeFromCart(item.id)}>Poista</button>
         </div>
       ))}
-      <p>Yhteishinta: {calculateTotalPrice()}€</p>
-      <button onClick={checkout} style={{ marginTop: '10px' }}>Tilaa</button>
+     
     </div>
   );
 };

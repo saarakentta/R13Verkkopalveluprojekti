@@ -1,20 +1,20 @@
+// App.js
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react';
 import Header from "./components/header";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import ShoppingCart from "./actioncomponents/shoppingcart";
 import Products from "./components/products";
-import ShoppingApp from "./actioncomponents/ShoppingApp";
+import Filters from "./components/filters";
+import { Route, Routes } from "react-router-dom";
 import Contact from "./components/contact";
-import Register from "./actioncomponents/Register";
-import Filters from "./components/filters"
-import { Route, Routes, Link } from "react-router-dom";
 import Authorization from "./actioncomponents/Authorization";
+import Register from "./actioncomponents/Register";
+
 
 function App() {
-
   const [filters, setFilters] = useState({
     merkki: '',
     korimalli: '',
@@ -23,43 +23,89 @@ function App() {
     hinta: '',
   });
 
-  const handleFilterChange = (filterType, selectedValue) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: selectedValue,
-    }));
-  }
+  const [cart, setCart] = useState([]);
 
-  const handleClearFilters = () => {
-    setFilters({
-      merkki: '',
-      korimalli: '',
-      vari: '',
-      kayttovoima: '',
-      hinta: '',
-    })
-  }
+  const addToCart = (product) => {
+    const existingProductIndex = cart.findIndex((item) => item.id === product.id);
+
+    if (existingProductIndex !== -1) {
+      // Jos tuote on jo ostoskorissa, päivitä sen määrää
+      const updatedCart = cart.map((item, index) =>
+        index === existingProductIndex
+          ? { ...item, quantity: item.quantity + 1, total: (item.quantity + 1) * item.hinta }
+          : item
+      );
+
+      setCart(updatedCart);
+    } else {
+      // Muuten lisää uusi tuote ostoskoriin
+      setCart((prevCart) => [
+        ...prevCart,
+        { ...product, quantity: 1, total: product.hinta }
+      ]);
+    }
+  };
+
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
+
+  const updateQuantity = (productId, newQuantity) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId
+          ? { ...item, quantity: newQuantity, total: newQuantity * item.hinta }
+          : item
+      )
+    );
+  };
 
   return (
     <div>
       <Header />
       <Navbar />
       <div className='content'>
-      <Filters
+        <Filters
           filters={filters}
-          onFilterChange={handleFilterChange}
-          onClearFilters={handleClearFilters} />
+          onFilterChange={(filterType, selectedValue) => {
+            setFilters((prevFilters) => ({
+              ...prevFilters,
+              [filterType]: selectedValue,
+            }));
+          }}
+          onClearFilters={() => {
+            setFilters({
+              merkki: '',
+              korimalli: '',
+              vari: '',
+              kayttovoima: '',
+              hinta: '',
+            });
+          }}
+        />
         <div>
           <Routes>
+            <Route
+              path=""
+              element={<Products filters={filters} addToCart={addToCart} />}
+            />
+            <Route
+              path="shoppingcart"
+              element={
+                <ShoppingCart
+                  cart={cart}
+                  removeFromCart={removeFromCart}
+                  updateQuantity={updateQuantity}
+                />
+              }
+            />
             <Route path="" element={<Products filters={filters} />} />
-            <Route path="shoppingcart" element={<ShoppingApp />} />
             <Route path="contact"  element = {<Contact />} />
             <Route path="login" element = {<Authorization />} />
             <Route path="register" element = {<Register />} />
           </Routes>
         </div>
       </div>
-
       <Footer />
     </div>
   );
