@@ -117,7 +117,7 @@ CREATE TABLE order_line(
     FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
-INSERT INTO `order_line` (`order_id`, `product_id`, `quantity`) VALUES ('1', '3', '3')
+INSERT INTO `order_line` (`order_id`, `product_id`, `quantity`) VALUES ('1', '3', '3');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
