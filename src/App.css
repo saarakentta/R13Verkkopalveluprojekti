@@ -142,3 +142,11 @@
   color: green;
   margin-top: 10px;
 }
+
+.lisaa, .poista {
+  margin-left: 3px;
+}
+
+.oskori {
+  margin-left: 10px;
+}
