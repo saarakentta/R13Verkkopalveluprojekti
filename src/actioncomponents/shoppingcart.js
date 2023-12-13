@@ -57,7 +57,6 @@ const ShoppingCart = ({ cart, removeFromCart, updateQuantity, emptyCart }) => {
   return (
     <div>
       <h2>Ostoskori</h2>
-      <button onClick={emptyCart}>Tyhjennä ostoskori</button>
       {cart && cart.map((item) => (
         <div key={item.id} style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
           <h3>{item.malli}</h3>
