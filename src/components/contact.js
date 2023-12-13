@@ -32,11 +32,11 @@ function Contact() {
       .post("http://localhost:3001/contact/add", { nickname, feedback_text })
       .then(async (resp) => {
         console.log("Feedback sent!");
-         // Tyhjennä kentät kirjautumisen jälkeen
-         setNickname("");
-         setFeedback_text("");
+        // Tyhjennä kentät kirjautumisen jälkeen
+        setNickname("");
+        setFeedback_text("");
         //Päivitä palautteet heti
-       await fetchFeedback();
+        await fetchFeedback();
         setFeedbackSent(true);
       })
       .catch((error) => console.log(error.message));

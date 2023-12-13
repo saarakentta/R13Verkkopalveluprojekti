@@ -17,8 +17,10 @@ function Login() {
         setPw("");
         setLoginFailed(false);
       })
-      .catch((error) => console.log(error.message));
-    setLoginFailed(true);
+      .catch((error) => {
+        console.log(error.message);
+        setLoginFailed(true);
+      });
   }
 
   return (

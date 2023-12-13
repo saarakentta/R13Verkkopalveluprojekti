@@ -155,12 +155,12 @@ app.post('/login', upload.none(), async (req, res) => {
   try {
       const connection = await mysql.createConnection(conf);
 
-      const [rows] = await connection.execute('SELECT pw FROM customer WHERE username=?', [uname]);
+      const [rows] = await connection.execute('SELECT pw, id FROM customer WHERE username=?', [uname]);
 
       if(rows.length > 0){
           const isAuth = await bcrypt.compare(pw, rows[0].pw);
           if(isAuth){
-              const token = jwt.sign({username: uname}, process.env.JWT_KEY);
+              const token = jwt.sign({customerId: rows[0].id, username: uname}, process.env.JWT_KEY);
               res.status(200).json({jwtToken: token});
           }else{
               res.status(401).end('Wrong password!');
@@ -243,3 +243,38 @@ app.get('/contact/all', async (req,res) =>{
       res.status(500).json({ error: err.message });
     }
   });
+
+  /**
+ * Place an order. 
+ */
+app.post('/order', async (req, res) => {
+
+  let connection;
+
+  try {
+      connection = await mysql.createConnection(conf);
+      connection.beginTransaction();
+
+      const order = req.body;
+      const token = req.headers.authorization?.split(" ")[1];
+      const decodedToken = jwt.decode(token);
+      const customerId = decodedToken.customerId;
+
+      const [info] = await connection.execute("INSERT INTO customer_order (order_date, customer_id) VALUES (NOW(),?)",[customerId]);
+
+      const orderId = info.insertId;
+
+      for (const product of order.products) {
+
+         const [result] = await connection.execute("INSERT INTO order_line (order_id, product_id, quantity) VALUES (?,?,?)",[orderId, product.product_id, product.quantity]);            
+
+        }
+
+      connection.commit();
+      res.status(200).json({orderId: orderId});
+
+  } catch (err) {
+      connection.rollback();
+      res.status(500).json({ error: err.message });
+  }
+});

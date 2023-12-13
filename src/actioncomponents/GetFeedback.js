@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function GetFeedback() {
-
   const [feedbackData, setFeedbackData] = useState([]);
 
   useEffect(() => {
-
     const fetchFeedback = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/contact/all');
+        const response = await axios.get("http://localhost:3001/contact/all");
         setFeedbackData(response.data);
       } catch (error) {
-        console.error('Error fetching feedback:', error.message);
+        console.error("Error fetching feedback:", error.message);
       }
     };
 
@@ -31,6 +29,6 @@ function GetFeedback() {
       </ul>
     </div>
   );
-};
+}
 
 export default GetFeedback;

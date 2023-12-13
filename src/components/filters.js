@@ -31,7 +31,7 @@ const Filters = ({ onFilterChange, onClearFilters }) => {
         const options = response.data || []
         setFilterOptions((prevOptions) => ({ ...prevOptions, [filterType]: Array.isArray(options) ? options : [options] }))
       } catch (error) {
-        console.error(error)
+        // console.error(error)
       }
     };
 
