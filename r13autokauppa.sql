@@ -104,7 +104,7 @@ CREATE TABLE customer_order(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     order_date DATETIME NOT NULL,
     customer_id INT,
-    FOREIGN KEY (customer_id) REFERENCES customer(id);
+    FOREIGN KEY (customer_id) REFERENCES customer(id));
 
 INSERT INTO `customer_order` (`id`, `order_date`, `customer_id`) VALUES (NULL, '2023-11-24 19:27:41', '1');
 
