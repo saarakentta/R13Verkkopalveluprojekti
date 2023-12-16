@@ -52,7 +52,7 @@ const showNotification = (message) => {
     .then((resp) => {
       console.log('Tilaus lähetetty onnistuneesti. ID:', resp.data.orderId);
       emptyCart();
-
+      showNotification('Tilauksesi on vastaanotettu. Kiitos!');
     })
     .catch((error) => {
       console.error('Virhe tilauksen lähetyksessä:', error.message);
