@@ -1,5 +1,5 @@
 // ShoppingCart.js
-import React from 'react';
+import React, { useState } from 'react';
 import { jwtToken } from '../components/signals/TokenSignal';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
@@ -10,12 +10,23 @@ const ShoppingCart = ({ cart, removeFromCart, updateQuantity, emptyCart }) => {
     return cart.reduce((total, item) => total + item.total, 0);
   };
 
+const [notification, setNotification] = useState(null);
+const showNotification = (message) => {
+  setNotification(message);
+
+  //Piilota ilmoitus 3 sekunnin kuluttua
+  setTimeout(() => {
+    setNotification(null);
+  }, 3000)
+}
+
   function order() {
 
     const token = jwtToken.value;
 
     if (!token) {
       console.error('Käyttäjä ei ole kirjautunut.');
+      showNotification('Kirjaudu sisään tehdäksesi tilauksen.');
       return;
     }
 
@@ -73,8 +84,9 @@ const ShoppingCart = ({ cart, removeFromCart, updateQuantity, emptyCart }) => {
         </div>
       ))}
       <div>
-      <button onClick={emptyCart}>Tyhjennä ostoskori</button>
+      <button className='empty' onClick={emptyCart}>Tyhjennä ostoskori</button>
       <button className='send' onClick={order}>Lähetä tilauksesi</button>
+      {notification && <div style={{fontSize: '20px', color: 'green', marginLeft: '10px', marginBottom: '5px'}}>{notification}</div>}
       </div>
     </div>
   );
