@@ -81,9 +81,10 @@ function Register() {
           placeholder="Vahvista salasana"
         />
       </div>
-    <br />
-
+    <br/>
+  
     {!passwordsMatch && (
+      //virheviestit käyttäjälle
         <p style={{ color: 'red' }}>Salasanat eivät täsmää. Tarkista antamasi salasanat ja yritä uudelleen.</p>
       )}
       <br />

@@ -8,6 +8,8 @@ function CustomerInfo(){
                     <div>
                         <h2>Tervetuloa ostoksille {customerData.value.fname + " " +  customerData.value.lname}</h2>
                         <button onClick={()=> jwtToken.value = ''}>Logout</button>
+                        {/* Tyhjennetään token kun painetaan logout-buttonia */}
+                    
                     </div> 
                 }
             </div>

@@ -211,6 +211,8 @@ app.post('/api/checkout', async (req, res) => {
  * Adds new feedback. 
  */
 app.post('/contact/add', upload.none(), async (req,res) => {
+
+  //Palautteeseen annetaan nimimerkki ja tekstikenttään palaute
   const nickname = req.body.nickname;
   const feedback = req.body.feedback_text;
 
@@ -235,6 +237,8 @@ app.get('/contact/all', async (req,res) =>{
 
     try {
       const connection = await mysql.createConnection(conf);
+
+      //Haetaan käyttäjälle kaikki edelliset palautteet
   
       const [rows] = await connection.execute('SELECT * FROM feedback');
       res.status(200).json(rows);
@@ -254,6 +258,8 @@ app.post('/order', async (req, res) => {
   try {
       connection = await mysql.createConnection(conf);
       connection.beginTransaction();
+
+      //Haetaan tokenista tallennettu customerId
 
       const order = req.body;
       const token = req.headers.authorization?.split(" ")[1];

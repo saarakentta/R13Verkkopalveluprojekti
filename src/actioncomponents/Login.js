@@ -12,7 +12,7 @@ function Login() {
       .postForm("http://localhost:3001/login", { username, pw })
       .then((resp) => {
         jwtToken.value = resp.data.jwtToken;
-        // Tyhjennä kentät kirjautumisen jälkeen
+        // Tyhjennetään kentät kirjautumisen jälkeen
         setUsername("");
         setPw("");
         setLoginFailed(false);
