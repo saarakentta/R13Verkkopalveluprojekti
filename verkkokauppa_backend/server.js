@@ -94,6 +94,32 @@ app.get('/products', async (req, res) => {
     }
 })
 
+  /* Add new product */
+
+  app.post('/products', async (req, res) => {
+
+    let connection
+
+      try {
+        connection = await mysql.createConnection(conf);
+          connection.beginTransaction()
+
+          const product = req.body
+
+              await connection.execute("INSERT INTO product (id, merkki, malli, korimalli, hinta, kayttovoima, image_url, vari) VALUES ('',?,?,?,?,?,?,?)",[product.merkki, product.malli, product.korimalli, product.hinta, product.kayttovoima,  product.image_url, product.vari])
+
+          connection.commit();
+          res.status(200).send("Products added!")
+
+      } catch (err) {
+          connection.rollback()
+          res.status(500).json({ error: err.message })
+      } finally {
+        if (connection)
+          await connection.end()
+    }
+  })
+
 app.get('/filter-options/:column', async (req, res) => {
   let connection
   const createFilterQuery = (column) => `SELECT DISTINCT ${column} FROM product`
@@ -145,7 +171,7 @@ app.post('/register', upload.none(), async (req,res) => {
 });
 
 /**
-* Checks the username and password and returns jwt authentication token if authorized. 
+* Checks the username and password and returns jwt authentication token if authorized.
 * Supports urlencoded or multipart
 */
 app.post('/login', upload.none(), async (req, res) => {
@@ -167,7 +193,7 @@ app.post('/login', upload.none(), async (req, res) => {
           }
       }else{
           res.status(404).send('User not found');
-      } 
+      }
 
   } catch (err) {
       res.status(500).json({ error: err.message });
@@ -200,7 +226,7 @@ app.post('/api/checkout', async (req, res) => {
 
 
   try {
-   
+
     res.status(200).json({ message: 'Order placed successfully!' });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -208,7 +234,7 @@ app.post('/api/checkout', async (req, res) => {
 });
 
 /**
- * Adds new feedback. 
+ * Adds new feedback.
  */
 app.post('/contact/add', upload.none(), async (req,res) => {
 
@@ -230,7 +256,7 @@ app.post('/contact/add', upload.none(), async (req,res) => {
 });
 
 /**
- * Gets all feedback. 
+ * Gets all feedback.
  */
 
 app.get('/contact/all', async (req,res) =>{
@@ -239,17 +265,17 @@ app.get('/contact/all', async (req,res) =>{
       const connection = await mysql.createConnection(conf);
 
       //Haetaan käyttäjälle kaikki edelliset palautteet
-  
+
       const [rows] = await connection.execute('SELECT * FROM feedback');
       res.status(200).json(rows);
-  
+
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   });
 
   /**
- * Place an order. 
+ * Place an order.
  */
 app.post('/order', async (req, res) => {
 
@@ -272,7 +298,7 @@ app.post('/order', async (req, res) => {
 
       for (const product of order.products) {
 
-         const [result] = await connection.execute("INSERT INTO order_line (order_id, product_id, quantity) VALUES (?,?,?)",[orderId, product.product_id, product.quantity]);            
+         const [result] = await connection.execute("INSERT INTO order_line (order_id, product_id, quantity) VALUES (?,?,?)",[orderId, product.product_id, product.quantity]);
 
         }
 

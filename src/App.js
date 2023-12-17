@@ -14,6 +14,7 @@ import { Route, Routes } from "react-router-dom";
 import Contact from "./components/contact";
 import Authorization from "./actioncomponents/Authorization";
 import Register from "./actioncomponents/Register";
+import AddProduct from "./actioncomponents/AddProduct";
 
 function App() {
   const [filters, setFilters] = useState({
@@ -75,7 +76,7 @@ function App() {
   const emptyCart = () => {
     setCart([]);
   };
-  
+
   return (
     <div>
       <Header />

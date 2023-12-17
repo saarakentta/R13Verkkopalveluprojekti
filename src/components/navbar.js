@@ -24,6 +24,11 @@ function AppNavbar() {
             </Link>
           </Nav.Link>
           <Nav.Link>
+            <Link className="navbarLink" to="/addProduct">
+              Lisää tuote
+            </Link>
+          </Nav.Link>
+          <Nav.Link>
             <Link className="navbarLink" to="/login">
               Kirjaudu
             </Link>
