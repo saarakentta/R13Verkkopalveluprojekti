@@ -121,6 +121,7 @@ function App() {
             <Route path="contact"  element={<Contact />} />
             <Route path="login" element={<Authorization />} />
             <Route path="register" element={<Register />} />
+            <Route path="addProduct" element={<AddProduct />} />
           </Routes>
         </div>
       </div>
