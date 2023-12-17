@@ -50,7 +50,7 @@ function AddProduct() {
             <h1 className='mb-5'>Lisää tuote</h1>
                 <Form onSubmit={handleSubmit} className='mb-3'>
                     <Form.Group className='mb-2'>
-                        <InputGroup size="lg" className="mb-3">
+                        <InputGroup size="lg" className="mb-2">
                             <InputGroup.Text className='inputText' id="inputGroup-sizing-default">
                             Merkki:
                             </InputGroup.Text>
@@ -63,7 +63,7 @@ function AddProduct() {
                     </Form.Group>
 
                     <Form.Group className='mb-2'>
-                        <InputGroup size="lg" className="mb-3">
+                        <InputGroup size="lg" className="mb-2">
                             <InputGroup.Text className='inputText' id="inputGroup-sizing-default">
                             Malli:
                             </InputGroup.Text>
@@ -76,7 +76,7 @@ function AddProduct() {
                     </Form.Group>
 
                     <Form.Group className='mb-2'>
-                        <InputGroup size="lg" className="mb-3">
+                        <InputGroup size="lg" className="mb-2">
                             <InputGroup.Text className='inputText' id="inputGroup-sizing-default">
                             Korimalli:
                             </InputGroup.Text>
@@ -89,7 +89,7 @@ function AddProduct() {
                     </Form.Group>
 
                     <Form.Group className='mb-2'>
-                        <InputGroup size="lg" className="mb-3">
+                        <InputGroup size="lg" className="mb-2">
                             <InputGroup.Text className='inputText' id="inputGroup-sizing-default">
                             Hinta:
                             </InputGroup.Text>
@@ -101,7 +101,7 @@ function AddProduct() {
                     </Form.Group>
 
                     <Form.Group className='mb-2'>
-                        <InputGroup size="lg" className="mb-3">
+                        <InputGroup size="lg" className="mb-2">
                             <InputGroup.Text className='inputText' id="inputGroup-sizing-default">
                             Käyttövoima:
                             </InputGroup.Text>
@@ -112,7 +112,7 @@ function AddProduct() {
                     </Form.Group>
 
                     <Form.Group className='mb-2'>
-                        <InputGroup size="lg" className="mb-3">
+                        <InputGroup size="lg" className="mb-2">
                             <InputGroup.Text className='inputText' id="inputGroup-sizing-default">
                             Väri:
                             </InputGroup.Text>
@@ -123,7 +123,7 @@ function AddProduct() {
                     </Form.Group>
 
                     <Form.Group className='mb-2'>
-                        <InputGroup size="lg" className="mb-3">
+                        <InputGroup size="lg" className="mb-2">
                             <InputGroup.Text className='inputText' id="inputGroup-sizing-default">
                             Image URL:
                             </InputGroup.Text>
